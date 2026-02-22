@@ -1,0 +1,119 @@
+.projects { padding: 100px 0; }
+.projects-header { margin-bottom: 3.5rem; }
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+/* Accent top line per project */
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+  opacity: 0;
+  transition: opacity 300ms;
+}
+.project-card:hover::before { opacity: 1; }
+
+/* Thumb */
+.project-thumb {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  background: var(--bg-card);
+}
+
+.project-thumb img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 500ms var(--ease);
+}
+.project-card:hover .project-thumb img { transform: scale(1.04); }
+
+.project-thumb-placeholder {
+  width: 100%; height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+.project-thumb-icon {
+  font-size: 2.5rem;
+  opacity: 0.7;
+}
+.project-thumb-hint {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  color: var(--faint);
+  text-align: center;
+}
+
+/* Overlay */
+.project-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(6,182,212,0.12);
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 250ms var(--ease);
+}
+.project-overlay span {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--cyan);
+  padding: 8px 18px;
+  border-radius: 100px;
+  background: rgba(8,13,24,0.85);
+  border: 1px solid rgba(6,182,212,0.35);
+}
+.project-card:hover .project-overlay { opacity: 1; }
+
+/* Body */
+.project-body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  flex: 1;
+}
+
+.project-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text);
+  transition: color 180ms;
+}
+.project-card:hover .project-title { color: var(--cyan); }
+
+.project-summary {
+  font-size: 0.875rem;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: auto;
+}
+
+@media (max-width: 768px) { .projects-grid { grid-template-columns: 1fr; } }
