@@ -14,7 +14,7 @@ export default function Contact() {
   e.preventDefault()
   setStatus('sending')
 
-  const res = await fetch('https://formspree.io/f/xpwzabcd', {  // ← your endpoint
+  const res = await fetch('https://formspree.io/f/maqdpaje', {  // ← your endpoint
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
