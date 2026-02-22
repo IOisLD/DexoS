@@ -14,15 +14,19 @@ export default function Contact() {
   e.preventDefault()
   setStatus('sending')
 
-  const res = await fetch('https://formspree.io/f/maqdpaje', {  // ← your endpoint
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      name:    form.name,
-      email:   form.email,
-      message: form.message,
-    }),
-  })
+  const res = await fetch('https://formspree.io/f/maqdpaje', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    'Accept': 'application/json',    // ← add this line
+  },
+  body: JSON.stringify({
+    name:    form.name,
+    email:   form.email,
+    message: form.message,
+  }),
+})
+
 
   if (res.ok) {
     setStatus('sent')
