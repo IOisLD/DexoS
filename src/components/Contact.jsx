@@ -10,12 +10,27 @@ export default function Contact() {
 
   const handleChange = e => setForm({ ...form, [e.target.name]: e.target.value })
 
-  const handleSubmit = e => {
-    e.preventDefault()
-    setStatus('sending')
-    // Simulated send — wire up to your backend / EmailJS / Formspree here
-    setTimeout(() => setStatus('sent'), 1800)
+  const handleSubmit = async (e) => {
+  e.preventDefault()
+  setStatus('sending')
+
+  const res = await fetch('https://formspree.io/f/xpwzabcd', {  // ← your endpoint
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      name:    form.name,
+      email:   form.email,
+      message: form.message,
+    }),
+  })
+
+  if (res.ok) {
+    setStatus('sent')
+  } else {
+    setStatus('idle')
+    alert('Something went wrong. Please email me directly.')
   }
+}
 
   return (
     <section className="contact" id="contact" ref={ref}>
