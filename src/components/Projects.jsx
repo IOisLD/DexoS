@@ -43,7 +43,7 @@ export default function Projects() {
                       </span>
                       {/* Add your image here — replace null in portfolio.config.js */}
                       <span className="project-thumb-hint">
-                        Add image in portfolio.config.js
+                        Coming soon
                       </span>
                     </div>
                   )

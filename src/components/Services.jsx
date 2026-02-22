@@ -14,7 +14,7 @@ export default function Services() {
             Expert <span className="grad">Solutions</span>
           </h2>
           <p className="section-sub reveal d3">
-            Delivering high-quality web solutions since 1997.
+            Delivering high-quality web solutions since 2022.
           </p>
         </div>
 
